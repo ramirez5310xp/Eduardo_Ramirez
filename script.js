@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateThemeButton() {
     const isDark = root.getAttribute("data-theme") === "dark";
-    themeToggle.textContent = isDark ? "☀️" : "🌙";
+    themeToggle.innerHTML = `<svg class="ui-icon" aria-hidden="true"><use href="#${isDark ? "i-sun" : "i-moon"}" /></svg>`;
     themeToggle.setAttribute("aria-label", isDark ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
   }
 
