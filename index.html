@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eduardo Ramírez | Lic. en Informática & Full Stack Developer</title>
+  <meta name="description" content="Portafolio de Eduardo Ramírez, Licenciado en Informática y desarrollador Full Stack en Java, .NET, Angular y React." />
+  <meta name="theme-color" content="#0b1120" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,8 +14,8 @@
     <div class="container nav-content">
       <a href="#" class="logo">ER<span>.dev</span></a>
       
-      <nav id="navMenu">
-        <ul class="nav-links">
+      <nav id="navMenu" aria-label="Navegación principal">
+        <ul class="nav-links" id="navLinks">
           <li><a href="#sobre-mi">Sobre mí</a></li>
           <li><a href="#stack">Stack</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
@@ -23,10 +25,10 @@
       </nav>
 
       <div class="nav-actions">
-        <button id="themeToggle" class="icon-btn" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="Cambiar a tema claro" title="Cambiar tema claro/oscuro">
           ☀️
         </button>
-        <button id="menuToggle" class="icon-btn mobile-only" aria-label="Abrir menú">
+        <button id="menuToggle" class="icon-btn mobile-only" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
           ☰
         </button>
       </div>
@@ -41,7 +43,7 @@
           <p class="badge">● El Salvador · Disponible para proyectos</p>
           <h1>Hola, soy <span>Eduardo Ramírez</span></h1>
           <h2 class="typing-wrapper">
-            <span id="typingText"></span><span class="cursor">|</span>
+            <span id="typingText" aria-label="Desarrollador Full Stack"></span><span class="cursor" aria-hidden="true">|</span>
           </h2>
           <p class="hero-desc">
             <strong>Licenciado en Informática</strong> con experiencia en desarrollo de software Full Stack,
@@ -67,7 +69,7 @@
               src="img/perfil.jpg"
               alt="Eduardo Antonio Ramírez Carías"
               class="profile-img"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 300%22><rect width=%22300%22 height=%22300%22 fill=%22%231e293b%22/><circle cx=%22150%22 cy=%22115%22 r=%2252%22 fill=%22%2338bdf8%22 opacity=%220.8%22/><path d=%22M65 265 C65 205, 235 205, 235 265%22 fill=%22%2338bdf8%22 opacity=%220.8%22/></svg>'"
+              decoding="async"
             />
             <span class="floating-pill pill-1">Java · Spring Boot</span>
             <span class="floating-pill pill-2">.NET · Angular</span>
@@ -81,7 +83,7 @@
     <section class="section" id="stack">
       <div class="container">
         <div class="section-header reveal">
-          <h3 class="section-title">Habilidades Técnicas</h3>
+          <h2 class="section-title">Habilidades técnicas</h2>
           <p class="section-subtitle">Tecnologías, frameworks y herramientas que domino para desarrollo empresarial de extremo a extremo.</p>
         </div>
 
@@ -114,22 +116,26 @@
     <section class="section section-alt" id="proyectos">
       <div class="container">
         <div class="section-header reveal">
-          <h3 class="section-title">Proyectos Destacados</h3>
+          <h2 class="section-title">Proyectos destacados</h2>
           <p class="section-subtitle">Sistemas empresariales desarrollados y liderados en entornos productivos. Haz clic para ver los detalles.</p>
         </div>
 
         <!-- Botones de Filtro -->
         <div class="filter-bar reveal">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="dotnet">.NET / Angular</button>
-          <button class="filter-btn" data-filter="java">Java / Spring Boot</button>
-          <button class="filter-btn" data-filter="fullstack">Full Stack & BI</button>
+          <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">Todos</button>
+          <button class="filter-btn" type="button" data-filter="dotnet" aria-pressed="false">.NET / Angular</button>
+          <button class="filter-btn" type="button" data-filter="java" aria-pressed="false">Java / Spring Boot</button>
+          <button class="filter-btn" type="button" data-filter="fullstack" aria-pressed="false">Full Stack & BI</button>
         </div>
 
         <div class="grid-3" id="projectsGrid">
           <!-- Proyecto 1: Gestión Hospitalaria (.NET / Angular) -->
           <article
             class="card project-card reveal"
+            tabindex="0"
+            role="button"
+            aria-haspopup="dialog"
+            aria-label="Ver detalles: Sistema de Gestión Hospitalaria"
             data-category="dotnet"
             data-title="Sistema de Gestión Hospitalaria"
             data-stack=".NET Core · .NET Framework · C# · Angular · SQL Server"
@@ -141,6 +147,8 @@
               <img
                 src="img/proyecto2.png"
                 alt="Sistema de Gestión Hospitalaria .NET y Angular"
+                loading="lazy"
+                decoding="async"
               />
               <span class="thumb-overlay">🔍 Ver arquitectura y detalles</span>
             </div>
@@ -154,6 +162,10 @@
           <!-- Proyecto 2: Facturación Electrónica y Declaraciones (Java / Spring Boot) -->
           <article
             class="card project-card reveal"
+            tabindex="0"
+            role="button"
+            aria-haspopup="dialog"
+            aria-label="Ver detalles: Facturación Electrónica y Aduanas"
             data-category="java"
             data-title="Facturación Electrónica y Declaraciones"
             data-stack="Java · Spring Boot · Spring Data JPA · Angular · React · Azure"
@@ -165,6 +177,8 @@
               <img
                 src="img/proyecto1.png"
                 alt="Sistema de Facturación Electrónica Java Spring Boot"
+                loading="lazy"
+                decoding="async"
               />
               <span class="thumb-overlay">🔍 Ver arquitectura y detalles</span>
             </div>
@@ -178,6 +192,10 @@
           <!-- Proyecto 3: Control de Inventarios & Power BI (Full Stack & Docker) -->
           <article
             class="card project-card reveal"
+            tabindex="0"
+            role="button"
+            aria-haspopup="dialog"
+            aria-label="Ver detalles: Control de Inventarios y Analítica BI"
             data-category="fullstack"
             data-title="Control de Inventarios & Analítica BI"
             data-stack="Java · Spring Boot · React · SQL Server · Docker · Power BI"
@@ -189,6 +207,8 @@
               <img
                 src="img/proyecto3.png"
                 alt="Sistema de Control de Inventarios y Power BI"
+                loading="lazy"
+                decoding="async"
               />
               <span class="thumb-overlay">🔍 Ver arquitectura y detalles</span>
             </div>
@@ -206,7 +226,7 @@
     <section class="section" id="trayectoria">
       <div class="container">
         <div class="section-header reveal">
-          <h3 class="section-title">Trayectoria & Formación</h3>
+          <h2 class="section-title">Trayectoria y formación</h2>
           <p class="section-subtitle">Experiencia comprobada en desarrollo empresarial y formación académica continua.</p>
         </div>
 
@@ -274,13 +294,13 @@
     <!-- Contacto con Copiado Rápido -->
     <section class="section section-alt" id="contacto">
       <div class="container contact-box reveal">
-        <h3 class="section-title">¿Trabajamos juntos?</h3>
+        <h2 class="section-title">¿Trabajamos juntos?</h2>
         <p>
           Disponible para posiciones como <strong>Desarrollador Full Stack (Java / .NET / Angular / React)</strong>
           o consultoría de software empresarial en El Salvador y modalidad remota.
         </p>
         <div class="hero-buttons">
-          <button id="copyEmailBtn" class="btn btn-primary" data-email="ramirez5310xp@outlook.com">
+          <button id="copyEmailBtn" class="btn btn-primary" type="button" data-email="ramirez5310xp@outlook.com">
             📋 Copiar Correo
           </button>
           <a href="mailto:ramirez5310xp@outlook.com" class="btn btn-secondary">
@@ -300,23 +320,23 @@
   <!-- Modal de Vista Previa del Proyecto -->
   <div id="projectModal" class="modal" aria-hidden="true">
     <div class="modal-backdrop" id="modalBackdrop"></div>
-    <div class="modal-dialog" role="dialog" aria-modal="true">
-      <button id="closeModal" class="modal-close" aria-label="Cerrar ventana">✕</button>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" tabindex="-1">
+      <button id="closeModal" class="modal-close" type="button" aria-label="Cerrar ventana">✕</button>
       <img id="modalImg" src="" alt="Vista previa del proyecto" class="modal-img" />
       <div class="modal-content">
         <span id="modalStack" class="tag"></span>
         <h3 id="modalTitle"></h3>
         <p id="modalDesc"></p>
         <div class="hero-buttons">
-          <a id="modalRepo" href="#" target="_blank" rel="noopener" class="btn btn-primary">Ver GitHub</a>
-          <a id="modalDemo" href="#" target="_blank" rel="noopener" class="btn btn-secondary">Conectar en LinkedIn</a>
+          <a id="modalRepo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Perfil de GitHub</a>
+          <a id="modalDemo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Perfil de LinkedIn</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Notificación Toast -->
-  <div id="toast" class="toast">¡Correo ramirez5310xp@outlook.com copiado!</div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <footer class="footer">
     <div class="container">

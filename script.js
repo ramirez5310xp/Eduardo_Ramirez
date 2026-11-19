@@ -1,129 +1,206 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Efecto de escritura automática personalizado con tu perfil
+  const root = document.documentElement;
+  const typingElement = document.getElementById("typingText");
   const roles = [
     "Licenciado en Informática · Full Stack Developer",
-    "Especialista en Java, Spring Boot & .NET Core",
-    "Desarrollo Empresarial con Angular, React & SQL Server"
+    "Java, Spring Boot y .NET",
+    "Angular, React y SQL Server"
   ];
-  const typingElement = document.getElementById("typingText");
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
 
-  function typeEffect() {
-    const currentRole = roles[roleIndex];
-    typingElement.textContent = isDeleting
-      ? currentRole.substring(0, charIndex--)
-      : currentRole.substring(0, charIndex++);
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    typingElement.textContent = roles[0];
+  } else {
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-    let speed = isDeleting ? 40 : 80;
+    function typeEffect() {
+      const currentRole = roles[roleIndex];
+      typingElement.textContent = currentRole.substring(0, charIndex);
+      charIndex += isDeleting ? -1 : 1;
 
-    if (!isDeleting && charIndex === currentRole.length + 1) {
-      speed = 1800;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      speed = 400;
+      let delay = isDeleting ? 35 : 65;
+      if (!isDeleting && charIndex > currentRole.length) {
+        isDeleting = true;
+        delay = 1600;
+      } else if (isDeleting && charIndex < 0) {
+        isDeleting = false;
+        charIndex = 0;
+        roleIndex = (roleIndex + 1) % roles.length;
+        delay = 350;
+      }
+
+      window.setTimeout(typeEffect, delay);
     }
-    setTimeout(typeEffect, speed);
+
+    typeEffect();
   }
-  typeEffect();
 
-  // 2. Cambio de Tema Oscuro / Claro
   const themeToggle = document.getElementById("themeToggle");
-  const root = document.documentElement;
-  const savedTheme = localStorage.getItem("portfolio-theme") || "dark";
+  const savedTheme = localStorage.getItem("portfolio-theme");
+  root.setAttribute("data-theme", savedTheme === "light" ? "light" : "dark");
 
-  root.setAttribute("data-theme", savedTheme);
-  themeToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+  function updateThemeButton() {
+    const isDark = root.getAttribute("data-theme") === "dark";
+    themeToggle.textContent = isDark ? "☀️" : "🌙";
+    themeToggle.setAttribute("aria-label", isDark ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+  }
 
+  updateThemeButton();
   themeToggle.addEventListener("click", () => {
     const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", nextTheme);
     localStorage.setItem("portfolio-theme", nextTheme);
-    themeToggle.textContent = nextTheme === "dark" ? "☀️" : "🌙";
+    updateThemeButton();
   });
 
-  // 3. Menú móvil
   const menuToggle = document.getElementById("menuToggle");
-  const navLinks = document.querySelector(".nav-links");
+  const navLinks = document.getElementById("navLinks");
+
+  function closeMenu() {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menú");
+  }
+
   menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+    navLinks.classList.toggle("open", !isOpen);
+    menuToggle.setAttribute("aria-expanded", String(!isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Abrir menú" : "Cerrar menú");
   });
 
-  // 4. Filtro interactivo de proyectos
-  const filterBtns = document.querySelectorAll(".filter-btn");
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  const filterButtons = document.querySelectorAll(".filter-btn");
   const projectCards = document.querySelectorAll(".project-card");
 
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      filterBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+      filterButtons.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle("active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
 
-      const filter = btn.dataset.filter;
       projectCards.forEach((card) => {
-        const match = filter === "all" || card.dataset.category === filter;
-        card.classList.toggle("hidden", !match);
+        const matches = filter === "all" || card.dataset.category === filter;
+        card.classList.toggle("hidden", !matches);
+        card.setAttribute("aria-hidden", String(!matches));
+        card.tabIndex = matches ? 0 : -1;
       });
     });
   });
 
-  // 5. Modal de vista ampliada para cada proyecto
   const modal = document.getElementById("projectModal");
+  const modalDialog = modal.querySelector(".modal-dialog");
   const modalImg = document.getElementById("modalImg");
   const modalStack = document.getElementById("modalStack");
   const modalTitle = document.getElementById("modalTitle");
   const modalDesc = document.getElementById("modalDesc");
   const modalRepo = document.getElementById("modalRepo");
   const modalDemo = document.getElementById("modalDemo");
+  let modalOpener = null;
+  let previousBodyOverflow = "";
 
-  projectCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const img = card.querySelector("img");
-      modalImg.src = img.src;
-      modalStack.textContent = card.dataset.stack;
-      modalTitle.textContent = card.dataset.title;
-      modalDesc.textContent = card.dataset.desc;
-      modalRepo.href = card.dataset.repo;
-      modalDemo.href = card.dataset.demo;
-      modal.classList.add("open");
-    });
-  });
+  function openProjectModal(card) {
+    const image = card.querySelector("img");
+    modalOpener = card;
+    modalImg.src = image.src;
+    modalImg.alt = image.alt;
+    modalStack.textContent = card.dataset.stack;
+    modalTitle.textContent = card.dataset.title;
+    modalDesc.textContent = card.dataset.desc;
+    modalRepo.href = card.dataset.repo;
+    modalDemo.href = card.dataset.demo;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    previousBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.getElementById("closeModal").focus();
+  }
 
   function closeProjectModal() {
+    if (!modal.classList.contains("open")) return;
     modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = previousBodyOverflow;
+    if (modalOpener) modalOpener.focus();
   }
+
+  projectCards.forEach((card) => {
+    card.addEventListener("click", () => openProjectModal(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openProjectModal(card);
+      }
+    });
+  });
 
   document.getElementById("closeModal").addEventListener("click", closeProjectModal);
   document.getElementById("modalBackdrop").addEventListener("click", closeProjectModal);
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeProjectModal();
-  });
 
-  // 6. Copiar correo con notificación Toast
-  const copyEmailBtn = document.getElementById("copyEmailBtn");
   const toast = document.getElementById("toast");
+  let toastTimer;
 
-  copyEmailBtn.addEventListener("click", () => {
-    const email = copyEmailBtn.dataset.email;
-    navigator.clipboard.writeText(email).then(() => {
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 2600);
-    });
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2800);
+  }
+
+  document.getElementById("copyEmailBtn").addEventListener("click", async (event) => {
+    try {
+      await navigator.clipboard.writeText(event.currentTarget.dataset.email);
+      showToast("Correo copiado al portapapeles.");
+    } catch (error) {
+      showToast("No fue posible copiar el correo. Usa el botón «Enviar email».");
+    }
   });
 
-  // 7. Animación Reveal al hacer scroll
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      if (modal.classList.contains("open")) closeProjectModal();
+      closeMenu();
+    }
 
-  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    if (event.key === "Tab" && modal.classList.contains("open")) {
+      const focusableElements = modalDialog.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    }
+  });
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  } else {
+    document.querySelectorAll(".reveal").forEach((element) => element.classList.add("active"));
+  }
 });
