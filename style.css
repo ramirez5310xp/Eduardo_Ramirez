@@ -46,7 +46,7 @@ body {
 
 .container {
   width: 90%;
-  max-width: 1120px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 
@@ -164,7 +164,7 @@ body {
 }
 
 .typing-wrapper {
-  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
   color: var(--muted);
   font-weight: 600;
   min-height: 2.2rem;
@@ -182,26 +182,30 @@ body {
 }
 
 .hero-desc {
-  max-width: 580px;
+  max-width: 600px;
   color: var(--muted);
   margin-bottom: 2rem;
   font-size: 1.02rem;
 }
 
+.hero-desc strong {
+  color: var(--text);
+}
+
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.78rem 1.55rem;
+  padding: 0.75rem 1.45rem;
   border-radius: 10px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   text-decoration: none;
   cursor: pointer;
   border: none;
@@ -265,22 +269,22 @@ body {
   color: var(--text);
   padding: 0.35rem 0.8rem;
   border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   box-shadow: var(--shadow);
   animation: float 4s ease-in-out infinite;
 }
 
 .pill-1 { top: -14px; left: -18px; animation-delay: 0s; }
-.pill-2 { bottom: 24px; right: -24px; animation-delay: 1.2s; }
-.pill-3 { bottom: -14px; left: 16px; animation-delay: 2.4s; }
+.pill-2 { bottom: 26px; right: -24px; animation-delay: 1.2s; }
+.pill-3 { bottom: -14px; left: 14px; animation-delay: 2.4s; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
 
-/* Secciones */
+/* Secciones y Grids */
 .section {
   padding: 4.5rem 0;
 }
@@ -308,11 +312,17 @@ body {
   gap: 1.6rem;
 }
 
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.4rem;
+}
+
 .card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 1.75rem;
+  padding: 1.65rem;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -328,16 +338,16 @@ body {
 }
 
 .card h4 {
-  font-size: 1.2rem;
-  margin-bottom: 0.65rem;
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
 }
 
 .card p {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.93rem;
 }
 
-/* Filtros y Tarjetas de Proyectos con Imagen */
+/* Filtros y Tarjetas de Proyectos */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -398,7 +408,7 @@ body {
 .thumb-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(11, 17, 32, 0.65);
+  background: rgba(11, 17, 32, 0.72);
   color: #ffffff;
   display: grid;
   place-items: center;
@@ -417,12 +427,85 @@ body {
 
 .tag {
   display: inline-block;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.4px;
+}
+
+/* Timeline de Experiencia y Educación */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.column-heading {
+  font-size: 1.25rem;
+  margin-bottom: 1.4rem;
+  color: var(--text);
+}
+
+.timeline {
+  position: relative;
+  border-left: 2px solid var(--border);
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.65rem;
+}
+
+.timeline-item {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  transition: border-color 0.2s ease;
+}
+
+.timeline-item:hover {
+  border-color: var(--accent);
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.95rem;
+  top: 1.45rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+}
+
+.timeline-date {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+
+.timeline-item h5 {
+  font-size: 1.08rem;
+  margin-bottom: 0.2rem;
+}
+
+.timeline-place {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  opacity: 0.85;
+  margin-bottom: 0.45rem;
+}
+
+.timeline-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 /* Modal */
@@ -492,19 +575,20 @@ body {
 }
 
 .modal-content h3 {
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   margin-bottom: 0.75rem;
 }
 
 .modal-content p {
   color: var(--muted);
   margin-bottom: 1.5rem;
+  font-size: 0.96rem;
 }
 
 /* Contacto y Toast */
 .contact-box {
   text-align: center;
-  max-width: 620px;
+  max-width: 680px;
 }
 
 .contact-box p {
