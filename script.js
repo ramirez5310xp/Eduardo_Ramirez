@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Efecto de escritura automática (Typewriter)
+  // 1. Efecto de escritura automática personalizado con tu perfil
   const roles = [
-    "Full Stack Developer Java & .NET",
-    "Arquitecto de APIs REST Escalables",
-    "Especialista en Spring Boot & ASP.NET Core"
+    "Licenciado en Informática · Full Stack Developer",
+    "Especialista en Java, Spring Boot & .NET Core",
+    "Desarrollo Empresarial con Angular, React & SQL Server"
   ];
   const typingElement = document.getElementById("typingText");
   let roleIndex = 0;
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ? currentRole.substring(0, charIndex--)
       : currentRole.substring(0, charIndex++);
 
-    let speed = isDeleting ? 45 : 85;
+    let speed = isDeleting ? 40 : 80;
 
     if (!isDeleting && charIndex === currentRole.length + 1) {
       speed = 1800;
