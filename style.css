@@ -1183,14 +1183,14 @@ button:focus-visible,
   border-radius: 999px;
   background: #ffffff;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3), 0 0 0 5px color-mix(in srgb, var(--card) 82%, transparent);
-  animation: orbit-sequence 16s ease-in-out infinite;
-  animation-delay: var(--sequence-delay);
 }
 
 .orbit-badge img {
   width: 2rem;
   height: 2rem;
   object-fit: contain;
+  animation: orbit-sequence 16s ease-in-out infinite;
+  animation-delay: var(--sequence-delay);
 }
 
 .orbit-badge::after {
@@ -1215,14 +1215,8 @@ button:focus-visible,
 .orbit-badge:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 @keyframes orbit-sequence {
-  0%, 12% {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 20%, transparent), 0 0 25px color-mix(in srgb, var(--accent) 50%, transparent);
-  }
-  16%, 100% {
-    border-color: rgba(148, 163, 184, 0.38);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3), 0 0 0 5px color-mix(in srgb, var(--card) 82%, transparent);
-  }
+  0%, 12% { transform: scale(1.14); }
+  16%, 100% { transform: scale(1); }
 }
 
 /* Diagramas de flujo y alcance para cada proyecto */
@@ -1263,7 +1257,7 @@ button:focus-visible,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orbit-badge { animation: none; }
+  .orbit-badge, .orbit-badge img { animation: none; }
 }
 
 /* Keep content visible independently of JavaScript. */
