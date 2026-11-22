@@ -15,42 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const root = document.documentElement;
-  const typingElement = document.getElementById("typingText");
-  const roles = [
-    "Licenciado en Informática · Full Stack Developer",
-    "Java, Spring Boot y .NET",
-    "Angular, React y SQL Server"
-  ];
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    typingElement.textContent = roles[0];
-  } else {
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function typeEffect() {
-      const currentRole = roles[roleIndex];
-      typingElement.textContent = currentRole.substring(0, charIndex);
-      charIndex += isDeleting ? -1 : 1;
-
-      let delay = isDeleting ? 35 : 65;
-      if (!isDeleting && charIndex > currentRole.length) {
-        isDeleting = true;
-        delay = 1600;
-      } else if (isDeleting && charIndex < 0) {
-        isDeleting = false;
-        charIndex = 0;
-        roleIndex = (roleIndex + 1) % roles.length;
-        delay = 350;
-      }
-
-      window.setTimeout(typeEffect, delay);
-    }
-
-    typeEffect();
-  }
-
   const themeToggle = document.getElementById("themeToggle");
   const savedTheme = localStorage.getItem("portfolio-theme");
   root.setAttribute("data-theme", savedTheme === "light" ? "light" : "dark");
@@ -112,25 +76,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const modal = document.getElementById("projectModal");
   const modalDialog = modal.querySelector(".modal-dialog");
-  const modalImg = document.getElementById("modalImg");
   const modalStack = document.getElementById("modalStack");
   const modalTitle = document.getElementById("modalTitle");
   const modalDesc = document.getElementById("modalDesc");
-  const modalRepo = document.getElementById("modalRepo");
-  const modalDemo = document.getElementById("modalDemo");
+  const modalScope = document.getElementById("modalScope");
   let modalOpener = null;
   let previousBodyOverflow = "";
 
   function openProjectModal(card) {
-    const image = card.querySelector("img");
     modalOpener = card;
-    modalImg.src = image.src;
-    modalImg.alt = image.alt;
     modalStack.textContent = card.dataset.stack;
     modalTitle.textContent = card.dataset.title;
     modalDesc.textContent = card.dataset.desc;
-    modalRepo.href = card.dataset.repo;
-    modalDemo.href = card.dataset.demo;
+    modalScope.replaceChildren(...card.dataset.scope.split("|").map((item) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = item;
+      return listItem;
+    }));
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
     previousBodyOverflow = document.body.style.overflow;

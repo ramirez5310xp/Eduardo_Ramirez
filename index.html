@@ -65,20 +65,19 @@
   </header>
 
   <main>
-    <!-- Hero con Foto de Perfil y Efecto Typewriter -->
+    <!-- Presentación profesional y fotografía -->
     <section class="hero" id="sobre-mi">
       <div class="container hero-grid">
         <div class="hero-text reveal">
           <p class="badge">● El Salvador · Disponible para proyectos</p>
           <h1>Hola, soy <span>Eduardo Ramírez</span></h1>
-          <h2 class="typing-wrapper">
-            <span id="typingText" aria-label="Desarrollador Full Stack"></span><span class="cursor" aria-hidden="true">|</span>
-          </h2>
+          <h2 class="typing-wrapper">Licenciado en Informática <span aria-hidden="true">·</span> Desarrollador Full Stack</h2>
           <p class="hero-desc">
-            <strong>Licenciado en Informática</strong> con experiencia en desarrollo de software Full Stack,
-            especializado en <strong>Java (Spring Boot)</strong>, <strong>.NET Core</strong>, <strong>Angular</strong>,
-            <strong>React</strong> y bases de datos <strong>SQL Server</strong>. Enfocado en soluciones empresariales
-            escalables con <em>Clean Architecture</em>, Docker y despliegues CI/CD en Microsoft Azure.
+            <strong>Licenciado en Informática</strong> con experiencia que combina desarrollo de software y conocimiento de procesos operativos.
+            He participado en sistemas de facturación electrónica, declaraciones de mercancías, inventarios y gestión hospitalaria,
+            trabajando desde las APIs y la lógica de negocio hasta las interfaces y consultas de base de datos.
+            Mi stack incluye <strong>Java y Spring Boot</strong>, <strong>.NET y C#</strong>, <strong>Angular</strong>,
+            <strong>React</strong> y <strong>SQL Server</strong>, además de seguridad con OAuth 2.0, Spring Security y JWT, contenedores Docker, CI/CD con GitHub Actions y Jenkins, Azure y Power BI.
           </p>
           <div class="hero-buttons">
             <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
@@ -91,18 +90,16 @@
           </div>
         </div>
 
-        <!-- Contenedor de Foto de Perfil -->
+        <!-- Fotografía con tecnologías orbitando alrededor -->
         <div class="hero-visual reveal">
-          <div class="profile-frame">
-            <img
-              src="img/perfil.jpg"
-              alt="Eduardo Antonio Ramírez Carías"
-              class="profile-img"
-              decoding="async"
-            />
-            <span class="floating-pill pill-1">Java · Spring Boot</span>
-            <span class="floating-pill pill-2">.NET · Angular</span>
-            <span class="floating-pill pill-3">SQL Server · Docker</span>
+          <div class="profile-orbit" aria-label="Tecnologías: Java, Spring Boot, .NET, C#, Angular, React, SQL Server y Docker">
+            <div class="orbit-track" aria-hidden="true">
+              <span class="orbit-label" style="--angle: 0deg">Java</span><span class="orbit-label" style="--angle: 45deg">Spring Boot</span>
+              <span class="orbit-label" style="--angle: 90deg">.NET</span><span class="orbit-label" style="--angle: 135deg">C#</span>
+              <span class="orbit-label" style="--angle: 180deg">Angular</span><span class="orbit-label" style="--angle: 225deg">React</span>
+              <span class="orbit-label" style="--angle: 270deg">SQL Server</span><span class="orbit-label" style="--angle: 315deg">Docker</span>
+            </div>
+            <div class="profile-frame"><img src="img/perfil.jpg" alt="Fotografía de Eduardo Antonio Ramírez Carías" class="profile-img" decoding="async" /></div>
           </div>
         </div>
       </div>
@@ -175,7 +172,7 @@
       <div class="container">
         <div class="section-header reveal">
           <h2 class="section-title"><svg class="section-icon" aria-hidden="true"><use href="#i-folder" /></svg>Proyectos destacados</h2>
-          <p class="section-subtitle">Sistemas empresariales desarrollados y liderados en entornos productivos. Haz clic para ver los detalles.</p>
+          <p class="section-subtitle">Experiencia aplicada a procesos concretos: qué resuelve cada sistema, qué parte desarrollé y qué tecnologías utilicé.</p>
         </div>
 
         <!-- Botones de Filtro -->
@@ -188,92 +185,38 @@
 
         <div class="grid-3" id="projectsGrid">
           <!-- Proyecto 1: Gestión Hospitalaria (.NET / Angular) -->
-          <article
-            class="card project-card reveal"
-            tabindex="0"
-            role="button"
-            aria-haspopup="dialog"
-            aria-label="Ver detalles: Sistema de Gestión Hospitalaria"
-            data-category="dotnet"
-            data-title="Sistema de Gestión Hospitalaria"
-            data-stack=".NET Core · .NET Framework · C# · Angular · SQL Server"
-            data-desc="Desarrollo y optimización de módulos críticos para un sistema hospitalario de alta disponibilidad en Enterprise DataBase El Salvador. Incluye gestión integral de pacientes, flujos de cobro en tiempo real, APIs RESTful seguras y optimización de Stored Procedures y Triggers complejos en SQL Server."
-            data-repo="https://github.com/ramirez5310xp"
-            data-demo="https://www.linkedin.com/in/ramirez5310xp"
-          >
-            <div class="project-thumb">
-              <img
-                src="img/proyecto2.png"
-                alt="Sistema de Gestión Hospitalaria .NET y Angular"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="thumb-overlay"><svg class="ui-icon" aria-hidden="true"><use href="#i-search" /></svg>Ver arquitectura y detalles</span>
+          <article class="card project-card reveal" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Ver detalles: Sistema de Gestión Hospitalaria"
+            data-category="dotnet" data-title="Sistema de Gestión Hospitalaria" data-stack=".NET Core · .NET Framework · C# · Angular · SQL Server" data-desc="En Enterprise DataBase El Salvador desarrollé, optimicé y mantuve módulos de un sistema hospitalario para automatizar procesos clínicos y administrativos. Implementé funcionalidades para gestión de pacientes y facturación/cobro, integrando frontend y backend con APIs REST. También atendí errores y tickets, e hice mantenimiento y optimización de procedimientos almacenados y triggers de SQL Server." data-scope="Backend: servicios y APIs REST con .NET Core y .NET Framework|Frontend: formularios, validaciones, componentes reutilizables y módulos en Angular y TypeScript|Integración: servicios Angular que consumen endpoints mediante HTTP y JSON|Datos: mantenimiento de procedimientos almacenados, triggers y consultas en SQL Server|Proceso: gestión de pacientes y facturación/cobro hospitalario">
+            <div class="project-visual project-visual-dotnet" aria-hidden="true">
+              <span class="visual-kicker">SISTEMA HOSPITALARIO · .NET</span><div class="visual-flow"><span>Pacientes</span><b>→</b><span>API REST</span><b>→</b><span>SQL Server</span></div>
+              <span class="visual-caption">Módulos clínicos · cobros · datos</span>
             </div>
-            <div class="project-body">
-              <span class="tag">.NET Core · Angular · SQL Server</span>
-              <h4>Sistema de Gestión Hospitalaria</h4>
-              <p>Plataforma clínica de alta disponibilidad para gestión de pacientes, cobros en tiempo real y procesos médicos automatizados.</p>
+            <div class="project-body"><span class="tag">.NET Core · .NET Framework · C# · Angular · SQL Server</span><h4>Sistema de Gestión Hospitalaria</h4><p>Desarrollo de módulos para organizar la información de pacientes y apoyar los flujos de cobro en un sistema hospitalario.</p>
+              <ul class="project-points"><li>Módulos clínicos y administrativos con Angular y .NET</li><li>APIs REST para intercambio entre componentes del sistema</li><li>Optimización y mantenimiento de SQL Server</li></ul>
             </div>
           </article>
 
           <!-- Proyecto 2: Facturación Electrónica y Declaraciones (Java / Spring Boot) -->
-          <article
-            class="card project-card reveal"
-            tabindex="0"
-            role="button"
-            aria-haspopup="dialog"
-            aria-label="Ver detalles: Facturación Electrónica y Aduanas"
-            data-category="java"
-            data-title="Facturación Electrónica y Declaraciones"
-            data-stack="Java · Spring Boot · Spring Data JPA · Angular · React · Azure"
-            data-desc="Liderazgo técnico en el desarrollo de los sistemas empresariales de Facturación Electrónica y Declaraciones de Mercancías en Textiles Opico S.A. de C.V. Implementado con arquitectura por capas, DTOs, mappers, APIs REST de alto rendimiento sobre SQL Server e integración en Microsoft Azure."
-            data-repo="https://github.com/ramirez5310xp"
-            data-demo="https://www.linkedin.com/in/ramirez5310xp"
-          >
-            <div class="project-thumb">
-              <img
-                src="img/proyecto1.png"
-                alt="Sistema de Facturación Electrónica Java Spring Boot"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="thumb-overlay"><svg class="ui-icon" aria-hidden="true"><use href="#i-search" /></svg>Ver arquitectura y detalles</span>
+          <article class="card project-card reveal" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Ver detalles: Facturación Electrónica y Declaraciones"
+            data-category="java" data-title="Facturación Electrónica y Declaraciones" data-stack="Java · Spring Boot · Spring Data JPA · Angular · React · Azure" data-desc="En Textiles Opico desarrollé aplicaciones empresariales para facturación electrónica y declaraciones de mercancías. Organicé el backend con controladores, servicios y repositorios; implementé DTOs, entidades y mapeadores; y gestioné operaciones transaccionales con Spring Data JPA e Hibernate sobre SQL Server. También diseñé APIs REST y componentes de interfaz con Angular y React, aplicando arquitectura por capas y principios de Clean Architecture." data-scope="Backend: controladores, servicios y repositorios con Java y Spring Boot|Datos: DTOs, entidades, mapeadores y persistencia con Spring Data JPA, Hibernate y SQL Server|Interfaz: componentes y servicios de usuario con Angular y React|Arquitectura: separación por capas y principios de Clean Architecture">
+            <div class="project-visual project-visual-java" aria-hidden="true">
+              <span class="visual-kicker">PROCESOS COMERCIALES · JAVA</span><div class="visual-flow"><span>Documento</span><b>→</b><span>API REST</span><b>→</b><span>Azure</span></div>
+              <span class="visual-caption">Facturación electrónica · declaraciones</span>
             </div>
-            <div class="project-body">
-              <span class="tag">Java · Spring Boot · Clean Architecture</span>
-              <h4>Facturación Electrónica y Aduanas</h4>
-              <p>Sistemas de facturación electrónica y declaraciones de mercancías con APIs RESTful, DTOs e integración en Microsoft Azure.</p>
+            <div class="project-body"><span class="tag">Java · Spring Boot · Spring Data JPA · Angular · React · Azure</span><h4>Facturación Electrónica y Declaraciones</h4><p>Herramientas internas para procesos de facturación y documentación de operaciones de comercio exterior.</p>
+              <ul class="project-points"><li>Sistemas de facturación electrónica y declaraciones de mercancías</li><li>Controladores, servicios, repositorios, DTOs y mapeadores</li><li>APIs REST y componentes Angular/React sobre SQL Server</li></ul>
             </div>
           </article>
 
           <!-- Proyecto 3: Control de Inventarios & Power BI (Full Stack & Docker) -->
-          <article
-            class="card project-card reveal"
-            tabindex="0"
-            role="button"
-            aria-haspopup="dialog"
-            aria-label="Ver detalles: Control de Inventarios y Analítica BI"
-            data-category="fullstack"
-            data-title="Control de Inventarios & Analítica BI"
-            data-stack="Java · Spring Boot · React · SQL Server · Docker · Power BI"
-            data-desc="Sistema integral para el control operativo y trazabilidad de inventarios de materia prima y producto terminado, contenedorizado mediante Docker con despliegue automatizado y conectado a tableros analíticos e indicadores financieros interactivos en Microsoft Power BI."
-            data-repo="https://github.com/ramirez5310xp"
-            data-demo="https://www.linkedin.com/in/ramirez5310xp"
-          >
-            <div class="project-thumb">
-              <img
-                src="img/proyecto3.png"
-                alt="Sistema de Control de Inventarios y Power BI"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="thumb-overlay"><svg class="ui-icon" aria-hidden="true"><use href="#i-search" /></svg>Ver arquitectura y detalles</span>
+          <article class="card project-card reveal" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Ver detalles: Control de Inventarios y Analítica BI"
+            data-category="fullstack" data-title="Control de Inventarios y Analítica BI" data-stack="Java · Spring Boot · React · SQL Server · Docker · Power BI" data-desc="Participé en sistemas empresariales de control de inventarios durante mi etapa como programador en Textiles Opico, después de haber gestionado inventarios operativamente en la misma empresa. Esa experiencia incluía seguimiento de entradas, salidas y existencias; registros en ERP, Kardex y Poligon; auditorías físicas y conciliaciones. En el desarrollo de aplicaciones empresariales trabajé con Java/Spring Boot, componentes de interfaz en Angular y React, contenedores Docker y tableros financieros de Power BI conectados a SQL Server." data-scope="Operación: seguimiento de entradas, salidas, existencias y abastecimiento de materiales|Trazabilidad: registros en ERP, Kardex y Poligon; auditorías y conciliación físico-sistema|Desarrollo: participación en el sistema empresarial de inventarios con Java/Spring Boot y componentes Angular/React|Análisis: tableros e indicadores financieros en Power BI sobre datos de SQL Server|Automatización operativa previa: macros de Excel y soluciones de registro con Power Apps">
+            <div class="project-visual project-visual-fullstack" aria-hidden="true">
+              <span class="visual-kicker">OPERACIONES · INVENTARIO Y BI</span><div class="visual-flow"><span>Movimientos</span><b>→</b><span>Inventario</span><b>→</b><span>Power BI</span></div>
+              <span class="visual-caption">Materia prima · producto terminado · análisis</span>
             </div>
-            <div class="project-body">
-              <span class="tag">Full Stack · Docker · Power BI</span>
-              <h4>Control de Inventarios & Analítica BI</h4>
-              <p>Gestión operativa de inventarios en tiempo real con contenedores Docker y dashboards financieros conectados a SQL Server.</p>
+            <div class="project-body"><span class="tag">Java · Spring Boot · React · SQL Server · Docker · Power BI</span><h4>Control de Inventarios y Analítica BI</h4><p>Digitalización del control operativo y seguimiento de inventarios, conectando los registros con indicadores para consultar la operación.</p>
+              <ul class="project-points"><li>Control de inventarios de materia prima y producto terminado</li><li>Seguimiento de movimientos, auditorías y diferencias de existencias</li><li>Sistema empresarial y reportes para apoyar decisiones operativas</li></ul>
             </div>
           </article>
         </div>
@@ -306,7 +249,7 @@
                   />
                   <p class="timeline-place">Enterprise DataBase El Salvador</p>
                 </div>
-                <p class="timeline-desc">Desarrollo de módulos clínicos de alta disponibilidad, APIs RESTful en .NET Core / .NET Framework, interfaces en Angular y optimización de SQL Server.</p>
+                <p class="timeline-desc">Desarrollo, optimización y mantenimiento de módulos clínicos y administrativos. Integración de APIs REST con Angular y .NET; gestión de pacientes y facturación/cobro; atención de tickets y mejora de procedimientos almacenados y triggers en SQL Server.</p>
               </div>
 
               <div class="timeline-item">
@@ -322,7 +265,7 @@
                   />
                   <p class="timeline-place">Textiles Opico S.A. de C.V.</p>
                 </div>
-                <p class="timeline-desc">Liderazgo en sistemas de Facturación Electrónica, Inventarios y Declaraciones de Mercancías con Spring Boot, Clean Architecture, Docker, Azure y Power BI.</p>
+                <p class="timeline-desc">Desarrollo de aplicaciones para Facturación Electrónica, Control de Inventarios y Declaraciones de Mercancías. Trabajo con APIs REST, Spring Data JPA/Hibernate, SQL Server, Angular/React, Clean Architecture, Docker y tableros financieros de Power BI.</p>
               </div>
 
               <div class="timeline-item">
@@ -338,7 +281,7 @@
                   />
                   <p class="timeline-place">Textiles Opico S.A. de C.V.</p>
                 </div>
-                <p class="timeline-desc">Control operativo y digital de inventarios de materia prima, auditorías periódicas e informes de consumo para abastecimiento continuo.</p>
+                <p class="timeline-desc">Control de entradas, salidas y existencias de materia prima en ERP, Kardex y Poligon. Auditorías físicas, conciliaciones, reportes de consumo y rotación, macros de Excel y soluciones de registro con Power Apps.</p>
               </div>
             </div>
           </div>
@@ -363,8 +306,8 @@
               </div>
 
               <div class="timeline-item">
-                <span class="timeline-date">2025 – Cursando 4º Ciclo (Formación Continua)</span>
-                <h5>Especialización en Software (Técnico Superior)</h5>
+                <span class="timeline-date">2025 – En curso</span>
+                <h5>Técnico en Desarrollo de Software</h5>
                 <div class="timeline-organization">
                   <img
                     class="organization-logo organization-logo-esit"
@@ -389,7 +332,7 @@
                     decoding="async"
                   />
                   <p class="timeline-place">Universidad de El Salvador</p>
-                </div>
+                </div><p class="timeline-desc">Curso de Arquitecturas Limpias para Desarrollo de Software; Desarrollo de Apps Móviles con React Native y Expo; Siete Principios del Testing de Software (Platzi).</p>
               </div>
 
               <div class="timeline-item">
@@ -443,15 +386,11 @@
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" tabindex="-1">
       <button id="closeModal" class="modal-close" type="button" aria-label="Cerrar ventana">✕</button>
-      <img id="modalImg" src="" alt="Vista previa del proyecto" class="modal-img" />
       <div class="modal-content">
         <span id="modalStack" class="tag"></span>
         <h3 id="modalTitle"></h3>
         <p id="modalDesc"></p>
-        <div class="hero-buttons">
-          <a id="modalRepo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Perfil de GitHub</a>
-          <a id="modalDemo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Perfil de LinkedIn</a>
-        </div>
+        <h4 class="modal-scope-title">Alcance y aporte</h4><ul id="modalScope" class="modal-scope"></ul>
       </div>
     </div>
   </div>
