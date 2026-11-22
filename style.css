@@ -1168,7 +1168,6 @@ button:focus-visible,
 .orbit-track {
   position: absolute;
   inset: 0;
-  animation: orbit-spin 40s linear infinite;
 }
 
 .orbit-badge {
@@ -1184,8 +1183,8 @@ button:focus-visible,
   border-radius: 999px;
   background: #ffffff;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3), 0 0 0 5px color-mix(in srgb, var(--card) 82%, transparent);
-  animation: orbit-counter-spin 40s linear infinite, orbit-sequence 16s ease-in-out infinite;
-  animation-delay: 0s, var(--sequence-delay);
+  animation: orbit-sequence 16s ease-in-out infinite;
+  animation-delay: var(--sequence-delay);
 }
 
 .orbit-badge img {
@@ -1215,8 +1214,6 @@ button:focus-visible,
 
 .orbit-badge:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-@keyframes orbit-spin { to { transform: rotate(1turn); } }
-@keyframes orbit-counter-spin { to { rotate: -1turn; } }
 @keyframes orbit-sequence {
   0%, 12% {
     border-color: var(--accent);
@@ -1266,7 +1263,7 @@ button:focus-visible,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orbit-track, .orbit-badge { animation: none; }
+  .orbit-badge { animation: none; }
 }
 
 /* Keep content visible independently of JavaScript. */
