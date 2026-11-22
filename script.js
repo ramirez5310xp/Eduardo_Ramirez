@@ -1,4 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Envía eventos al contenedor GTM configurado en index.html.
+  if (window.dataLayer && typeof window.dataLayer.push === "function") {
+    document.addEventListener("click", (event) => {
+      const target = event.target.closest("a, button, .project-card");
+      if (!target) return;
+
+      const text = (target.getAttribute("aria-label") || target.textContent || "")
+        .replace(/\s+/g, " ").trim().slice(0, 100);
+      const link = target.closest("a");
+      const params = { item_name: text || "Elemento sin texto" };
+      if (link && !/^(mailto:|tel:)/i.test(link.href)) params.link_url = link.href;
+      window.dataLayer.push({ event: "portfolio_click", ...params });
+    });
+  }
+
   const root = document.documentElement;
   const typingElement = document.getElementById("typingText");
   const roles = [
