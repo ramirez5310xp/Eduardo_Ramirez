@@ -25,6 +25,6 @@ Abre `index.html` en un navegador. Las imágenes se encuentran en `img/`; conser
 
 ## Analitica de visitas
 
-El portafolio carga el contenedor de Google Tag Manager `GTM-KPL6FRRN`. En Google Tag Manager, configura una etiqueta de Google Analytics 4 con tu ID de medicion y una etiqueta de evento GA4 para el evento personalizado `portfolio_click` (disparador: evento personalizado con el mismo nombre). Asi podras consultar las visitas y los clics en el panel privado de Google Analytics.
+El portafolio envia visitas y eventos directamente a Google Analytics 4 con el ID `G-XV2KSDVCCX`. Tambien carga el contenedor de Google Tag Manager `GTM-KPL6FRRN`, que puedes usar para otras etiquetas. Si configuras GA4 tambien desde GTM, evita duplicar la etiqueta de configuracion de GA4 para no contar dos veces las visitas.
 
-El codigo envia `portfolio_click` al hacer clic en enlaces, botones y tarjetas de proyectos. Incluye el texto del elemento y el destino de enlaces que no sean de correo o telefono. Configura en GTM las etiquetas y disparadores que quieras publicar; este sitio no envia datos de identidad deliberadamente.
+El codigo envia `portfolio_click` al hacer clic en enlaces, botones y tarjetas de proyectos. Incluye el texto del elemento y el destino de enlaces que no sean de correo o telefono. Este sitio no envia datos de identidad deliberadamente.

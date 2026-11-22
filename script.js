@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Envía eventos al contenedor GTM configurado en index.html.
-  if (window.dataLayer && typeof window.dataLayer.push === "function") {
+  // Envía los clics a GA4 y los deja disponibles en el dataLayer de GTM.
+  if (typeof window.gtag === "function") {
     document.addEventListener("click", (event) => {
       const target = event.target.closest("a, button, .project-card");
       if (!target) return;
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const link = target.closest("a");
       const params = { item_name: text || "Elemento sin texto" };
       if (link && !/^(mailto:|tel:)/i.test(link.href)) params.link_url = link.href;
-      window.dataLayer.push({ event: "portfolio_click", ...params });
+      window.gtag("event", "portfolio_click", params);
     });
   }
 
