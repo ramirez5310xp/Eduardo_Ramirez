@@ -631,8 +631,8 @@ body {
 
 /* Animación Reveal al hacer Scroll */
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
@@ -1032,7 +1032,7 @@ button:focus-visible,
 }
 
 .reveal {
-  transform: translateY(18px);
+  transform: none;
   transition-duration: 0.5s;
 }
 
@@ -1233,6 +1233,9 @@ button:focus-visible,
 @media (prefers-reduced-motion: reduce) {
   .orbit-track, .orbit-label { animation: none; }
 }
+
+/* Keep content visible independently of JavaScript. */
+.reveal, .reveal.active { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   *,
