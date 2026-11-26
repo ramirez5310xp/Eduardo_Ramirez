@@ -121,7 +121,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   projectCards.forEach((card) => {
-    card.addEventListener("click", () => openProjectModal(card));
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a")) return;
+      openProjectModal(card);
+    });
     card.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();

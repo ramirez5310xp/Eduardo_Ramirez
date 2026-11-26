@@ -189,6 +189,8 @@
           <button class="filter-btn" type="button" data-filter="dotnet" aria-pressed="false">.NET / Angular</button>
           <button class="filter-btn" type="button" data-filter="java" aria-pressed="false">Java / Spring Boot</button>
           <button class="filter-btn" type="button" data-filter="fullstack" aria-pressed="false">Full Stack & BI</button>
+          <button class="filter-btn" type="button" data-filter="react" aria-pressed="false">React</button>
+          <button class="filter-btn" type="button" data-filter="other" aria-pressed="false">Otros</button>
         </div>
 
         <div class="grid-3" id="projectsGrid">
@@ -225,6 +227,45 @@
             </div>
             <div class="project-body"><span class="tag">Java · Spring Boot · React · SQL Server · Docker · Power BI</span><h4>Control de Inventarios y Analítica BI</h4><p>Digitalización del control operativo y seguimiento de inventarios, conectando los registros con indicadores para consultar la operación.</p>
               <ul class="project-points"><li>Control de inventarios de materia prima y producto terminado</li><li>Seguimiento de movimientos, auditorías y diferencias de existencias</li><li>Sistema empresarial y reportes para apoyar decisiones operativas</li></ul>
+            </div>
+          </article>
+
+          <article class="card project-card reveal" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Ver detalles: Gestión de productos con React"
+            data-category="react" data-title="Gestión de productos con React" data-stack="React · Vite · JavaScript · React Router · DummyJSON REST API" data-desc="Aplicación de práctica personal desarrollada con React para consumir la API pública DummyJSON. Permite explorar productos, buscar y filtrar por categoría, navegar entre páginas y consultar el detalle de cada producto. También incluye operaciones de creación, actualización y eliminación para practicar endpoints REST; DummyJSON simula esos cambios y no los conserva permanentemente." data-scope="Catálogo de productos consumido desde DummyJSON|Búsqueda, filtros por categoría y paginación|Vista de detalle con React Router|Operaciones de creación, actualización y eliminación simuladas por la API|Estados de carga y manejo de errores">
+            <div class="project-visual project-visual-react" aria-hidden="true">
+              <span class="visual-kicker">PRÁCTICA PERSONAL · REACT</span><div class="visual-flow"><span>React</span><b>→</b><span>REST API</span><b>→</b><span>DummyJSON</span></div>
+              <span class="visual-caption">Búsqueda · categorías · CRUD de prueba</span>
+            </div>
+            <div class="project-body"><span class="tag">React · Vite · JavaScript · React Router · REST</span><h4>Gestión de productos con React</h4><p>Aplicación interactiva para practicar el consumo de endpoints REST y la gestión de productos con DummyJSON.</p>
+              <ul class="project-points"><li>Búsqueda, categorías y paginación</li><li>Detalle de productos y operaciones CRUD de prueba</li><li>Estados de carga y errores</li></ul>
+              <a class="btn btn-primary project-repo-link" href="https://ramirez5310xp.github.io/Eduardo_Ramirez/react-products/" target="_blank" rel="noopener">Probar demo</a>
+              <a class="btn btn-secondary project-repo-link" href="https://github.com/ramirez5310xp/react-products" target="_blank" rel="noopener">Ver código en GitHub</a>
+            </div>
+          </article>
+
+          <article class="card project-card reveal" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Ver detalles: Autenticación web con Firebase"
+            data-category="other" data-title="Autenticación web con Firebase" data-stack="HTML5 · CSS3 · JavaScript · Firebase Authentication" data-desc="Laboratorio web para practicar la autenticación de usuarios con Firebase. Incluye registro e inicio de sesión con correo y contraseña, gestión de sesión, protección del dashboard y cierre de sesión." data-scope="Registro e inicio de sesión con correo y contraseña|Gestión del estado de autenticación y sesión|Protección de la vista privada del dashboard|Cierre de sesión con Firebase Authentication">
+            <div class="project-visual project-visual-firebase" aria-hidden="true">
+              <span class="visual-kicker">LABORATORIO WEB · FIREBASE</span><div class="visual-flow"><span>Usuario</span><b>→</b><span>Firebase Auth</span><b>→</b><span>Dashboard</span></div>
+              <span class="visual-caption">Registro · sesión · rutas privadas</span>
+            </div>
+            <div class="project-body"><span class="tag">HTML · CSS · JavaScript · Firebase</span><h4>Autenticación web con Firebase</h4><p>Práctica de registro, inicio de sesión y control de acceso usando Firebase Authentication.</p>
+              <ul class="project-points"><li>Registro e inicio de sesión</li><li>Gestión y cierre de sesión</li><li>Dashboard protegido</li></ul>
+              <a class="btn btn-secondary project-repo-link" href="https://github.com/ramirez5310xp/firebase-auth-lab" target="_blank" rel="noopener">Ver código en GitHub</a>
+              <span class="project-demo-note">Demo web no publicada todavía.</span>
+            </div>
+          </article>
+
+          <article class="card project-card reveal" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Ver detalles: Registro de ejecución serverless"
+            data-category="other" data-title="Registro de ejecución serverless" data-stack="Python · OpenFaaS · HTTP · SHA-256" data-desc="Laboratorio de cómputo en la nube con una función serverless en Python y OpenFaaS. La función muestra un formulario, valida los datos enviados y genera un archivo JSON con un identificador, metadatos de ejecución y una firma SHA-256." data-scope="Función HTTP en Python preparada para OpenFaaS|Formulario de registro y validación de datos|Generación de identificador y metadatos de ejecución|Descarga de resultado JSON con firma SHA-256">
+            <div class="project-visual project-visual-serverless" aria-hidden="true">
+              <span class="visual-kicker">LABORATORIO CLOUD · OPENFAAS</span><div class="visual-flow"><span>HTTP</span><b>→</b><span>Python</span><b>→</b><span>JSON</span></div>
+              <span class="visual-caption">Función serverless · validación · SHA-256</span>
+            </div>
+            <div class="project-body"><span class="tag">Python · OpenFaaS · HTTP</span><h4>Registro de ejecución serverless</h4><p>Función en Python que recibe datos de un formulario y genera un registro de ejecución firmado.</p>
+              <ul class="project-points"><li>Función serverless con OpenFaaS</li><li>Validación de datos y respuesta HTTP</li><li>Archivo JSON firmado con SHA-256</li></ul>
+              <a class="btn btn-secondary project-repo-link" href="https://github.com/ramirez5310xp/laboratorio-serverless" target="_blank" rel="noopener">Ver código en GitHub</a>
+              <span class="project-demo-note">Requiere desplegar OpenFaaS para ejecutarse.</span>
             </div>
           </article>
         </div>
