@@ -54,6 +54,10 @@
       </nav>
 
       <div class="nav-actions">
+        <div class="language-toggle" role="group" aria-label="Language / Idioma">
+          <button class="language-btn" type="button" data-language="es" aria-pressed="true">ES</button>
+          <button class="language-btn" type="button" data-language="en" aria-pressed="false">EN</button>
+        </div>
         <button id="themeToggle" class="icon-btn" type="button" aria-label="Cambiar a tema claro" title="Cambiar tema claro/oscuro">
           <svg class="ui-icon" aria-hidden="true"><use href="#i-sun" /></svg>
         </button>
@@ -356,6 +360,19 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="apoyo">
+      <div class="container contact-box reveal feedback-box">
+        <h2 class="section-title">¿Te gustó mi portafolio?</h2>
+        <p>Deja un like o registra tu visita. Puedes guardar cada opción una vez desde este navegador.</p>
+        <div class="hero-buttons feedback-actions">
+          <button class="btn btn-primary feedback-btn" type="button" data-feedback="like">♥ Me gusta <span class="feedback-count" id="likeCount">0</span></button>
+          <button class="btn btn-secondary feedback-btn" type="button" data-feedback="visit">Registrar visita <span class="feedback-count" id="visitCount">0</span></button>
+        </div>
+        <p class="feedback-status" id="feedbackStatus" aria-live="polite">Tu interacción queda guardada en este navegador.</p>
+        <p class="feedback-note">El marcador es local a este navegador; no identifica personas ni sincroniza datos entre dispositivos.</p>
       </div>
     </section>
 
