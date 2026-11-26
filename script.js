@@ -143,46 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
     toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2800);
   }
 
-  // Marcador local: limita cada tipo de interacción a una por navegador.
-  const feedbackLabels = { like: "Me gusta", visit: "Visita" };
-  const feedbackStatus = document.getElementById("feedbackStatus");
-  document.querySelectorAll(".feedback-btn").forEach((button) => {
-    const type = button.dataset.feedback;
-    const storageKey = `portfolio-feedback-${type}`;
-    const countElement = document.getElementById(type === "like" ? "likeCount" : "visitCount");
-    let saved = null;
-    try { saved = JSON.parse(localStorage.getItem(storageKey)); } catch (error) { /* Storage no disponible o registro inválido. */ }
-
-    countElement.textContent = saved ? "1" : "0";
-    if (saved && saved.timestamp) {
-      const date = new Date(saved.timestamp).toLocaleString(currentLanguage === "en" ? "en-US" : "es-SV");
-      feedbackStatus.textContent = currentLanguage === "en"
-        ? `${type === "like" ? "Like" : "Visit"} registered: ${date}.`
-        : `${feedbackLabels[type]} registrado: ${date}.`;
-    }
-    button.disabled = Boolean(saved);
-    if (saved) button.setAttribute("aria-label", `${feedbackLabels[type]} ya registrado en este navegador`);
-
-    button.addEventListener("click", () => {
-      if (button.disabled) return;
-      const entry = { timestamp: new Date().toISOString() };
-      try {
-        localStorage.setItem(storageKey, JSON.stringify(entry));
-        button.disabled = true;
-        button.setAttribute("aria-label", `${feedbackLabels[type]} ya registrado en este navegador`);
-        countElement.textContent = "1";
-        const date = new Date(entry.timestamp).toLocaleString(currentLanguage === "en" ? "en-US" : "es-SV");
-        feedbackStatus.textContent = currentLanguage === "en"
-          ? `${type === "like" ? "Like" : "Visit"} registered: ${date}.`
-          : `${feedbackLabels[type]} registrado: ${date}.`;
-      } catch (error) {
-        feedbackStatus.textContent = currentLanguage === "en"
-          ? "Could not save in this browser. Check your storage settings."
-          : "No se pudo guardar en este navegador. Revisa la configuración de almacenamiento.";
-      }
-    });
-  });
-
   document.getElementById("copyEmailBtn").addEventListener("click", async (event) => {
     try {
       await navigator.clipboard.writeText(event.currentTarget.dataset.email);
