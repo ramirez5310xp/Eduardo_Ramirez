@@ -1249,6 +1249,8 @@ button:focus-visible,
 .project-visual-firebase { background: radial-gradient(ellipse at 50% 120%, color-mix(in srgb, #ffca28 17%, var(--card)), var(--bg-alt) 72%); }
 .project-visual-serverless { background: radial-gradient(ellipse at 50% 120%, color-mix(in srgb, #f97316 17%, var(--card)), var(--bg-alt) 72%); }
 .project-repo-link { width: fit-content; margin-top: 0.7rem; font-size: 0.8rem; }
+.project-actions { display: flex; flex-wrap: nowrap; gap: 0.55rem; margin-top: 0.7rem; }
+.project-actions .project-repo-link { min-width: 0; flex: 1 1 0; justify-content: center; margin-top: 0; padding: 0.65rem 0.6rem; white-space: nowrap; }
 .project-demo-note { display: block; margin-top: 0.55rem; color: var(--muted); font-size: 0.76rem; }
 .modal-scope-title { margin: 1.4rem 0 0.55rem; }
 .modal-scope { display: grid; gap: 0.55rem; margin: 0; padding-left: 1.2rem; color: var(--muted); line-height: 1.7; }
